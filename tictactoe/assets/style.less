@@ -13,13 +13,15 @@ main {
 	width: 100%;
 	height: 100%;
 	background: #e7e7e7;
-	max-width: 1280px;
+	max-width: 800px;
 	max-height: 720px;
 	overflow: hidden;
 	margin: auto;
 	font-size: 1.3em;
 	font-family: 'Open Sans', sans-serif;
 	box-shadow: 0 0 20px #404040;
+	text-align: center;
+	padding: 2%;
 
 	img { width: 100%; display: block; }
 	h1, h2, h3 { font-size: 1.5em; margin-bottom: 0.5em; }
@@ -46,29 +48,23 @@ main {
 		box-shadow: 0 1px 0 #404040;
 	}
 
-	.dimmer {
+	.modal {
 		position: absolute;
-		width: 100%;
-		height: 100%;
-		background: rgba(0,0,0,0.6);
-		z-index: 5;
+		background: #fff;
+		width: 56%;
+		padding: 2%;
+		top: 20%;
+		left: 20%;
+		border-radius: 1em;
+		box-shadow: 0 0 20px #000;
+		text-align: center;
 		display: none;
-
-		.modal {
-			position: absolute;
-			background: #fff;
-			width: 56%;
-			padding: 2%;
-			top: 20%;
-			left: 20%;
-			border-radius: 1em;
-			box-shadow: 0 0 20px #000;
-			text-align: center;
-		}
+		z-index: 5;
 	}
 
 	.board {
-		width: 50%;
+		width: 70%;
+		margin: 2% 18%;
 
 		div {
 			width: 25%;
@@ -78,6 +74,7 @@ main {
 			cursor: pointer;
 			overflow: hidden;
 			text-align: center;
+			font-size: 5em;
 		}
 	}
 }

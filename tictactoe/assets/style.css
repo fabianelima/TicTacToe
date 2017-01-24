@@ -16,13 +16,15 @@ main {
   width: 100%;
   height: 100%;
   background: #e7e7e7;
-  max-width: 1280px;
+  max-width: 800px;
   max-height: 720px;
   overflow: hidden;
   margin: auto;
   font-size: 1.3em;
   font-family: 'Open Sans', sans-serif;
   box-shadow: 0 0 20px #404040;
+  text-align: center;
+  padding: 2%;
 }
 main img {
   width: 100%;
@@ -58,15 +60,7 @@ main button:active {
   transform: translateY(3px);
   box-shadow: 0 1px 0 #404040;
 }
-main .dimmer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 5;
-  display: none;
-}
-main .dimmer .modal {
+main .modal {
   position: absolute;
   background: #fff;
   width: 56%;
@@ -76,9 +70,12 @@ main .dimmer .modal {
   border-radius: 1em;
   box-shadow: 0 0 20px #000;
   text-align: center;
+  display: none;
+  z-index: 5;
 }
 main .board {
-  width: 50%;
+  width: 70%;
+  margin: 2% 18%;
 }
 main .board div {
   width: 25%;
@@ -88,6 +85,7 @@ main .board div {
   cursor: pointer;
   overflow: hidden;
   text-align: center;
+  font-size: 5em;
 }
 @media screen and (max-width: 1280px) {
   main {

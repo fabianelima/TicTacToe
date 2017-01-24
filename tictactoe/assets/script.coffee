@@ -34,12 +34,19 @@ $ ->
 					]
 
 			if comb[0] is '×××' or comb[1] is '×××' or comb[2] is '×××' or comb[3] is '×××' or comb[4] is '×××' or comb[5] is '×××' or comb[6] is '×××' or comb[7] is '×××'
-				$('.dimmer').fadeIn()
+				$('section').css('filter','blur(15px)')
+				$('.modal').fadeIn()
 				$('.modal').html('<h1>Vitória do &times;!</h1><p>Clique no botão abaixo para jogar novamente.</p><button class="again">De novo!</button>')
 
-			if comb[0] is '○○○' or comb[1] is '○○○' or comb[2] is '○○○' or comb[3] is '○○○' or comb[4] is '○○○' or comb[5] is '○○○' or comb[6] is '○○○' or comb[7] is '○○○'
-				$('.dimmer').fadeIn()
+			else if comb[0] is '○○○' or comb[1] is '○○○' or comb[2] is '○○○' or comb[3] is '○○○' or comb[4] is '○○○' or comb[5] is '○○○' or comb[6] is '○○○' or comb[7] is '○○○'
+				$('section').css('filter','blur(15px)')
+				$('.modal').fadeIn()
 				$('.modal').html('<h1>Vitória do &cir;!</h1><p>Clique no botão abaixo para jogar novamente.</p><button class="again">De novo!</button>')
+
+			else if count is 9
+				$('section').css('filter','blur(15px)')
+				$('.modal').fadeIn()
+				$('.modal').html('<h1>Empate!</h1><p>Clique no botão abaixo para jogar novamente.</p><button class="again">De novo!</button>')
 
 	$(document).on 'click', '.board div', -> func.tic($(this))
 	$(document).on 'click', '.again', -> location.reload()
