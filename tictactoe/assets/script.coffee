@@ -7,38 +7,46 @@
 $ ->
 	vez = 0
 	count = 0
+
+	indexes = [
+		#rows
+		[0, 1, 2]
+		[3, 4, 5]
+		[6, 7, 8]
+		#cols
+		[0, 3, 6]
+		[1, 4, 7]
+		[2, 5, 8]
+		#diag
+		[0, 4, 8]
+		[2, 4, 6]
+	]
+
 	func =
-		tic: (x) ->
+		tic: ($el) ->
 			count++
-			x.css({ pointerEvents: 'none' })
+			$el.css({ pointerEvents: 'none' })
 
 			if vez is 0
-				x.html('&times;')
+				$el.html('&times;')
 				vez = 1
 			else if vez is 1
-				x.html('&cir;')
+				$el.html('&cir;')
 				vez = 0
 
 			func.verify()
 
 		verify: ->
-			comb = 	[
-						$('.board div:eq(0)').html() + $('.board div:eq(1)').html() + $('.board div:eq(2)').html(),
-						$('.board div:eq(3)').html() + $('.board div:eq(4)').html() + $('.board div:eq(5)').html(),
-						$('.board div:eq(6)').html() + $('.board div:eq(7)').html() + $('.board div:eq(8)').html(),
-						$('.board div:eq(2)').html() + $('.board div:eq(4)').html() + $('.board div:eq(6)').html(),
-						$('.board div:eq(0)').html() + $('.board div:eq(4)').html() + $('.board div:eq(8)').html(),
-						$('.board div:eq(4)').html() + $('.board div:eq(3)').html() + $('.board div:eq(6)').html(),
-						$('.board div:eq(1)').html() + $('.board div:eq(4)').html() + $('.board div:eq(7)').html(),
-						$('.board div:eq(2)').html() + $('.board div:eq(5)').html() + $('.board div:eq(8)').html()
-					]
+			comb = indexes.map (list) ->
+				list.map (i) -> $(".board div:eq(#{i})").html()
+				.join ''
 
-			if comb[0] is '×××' or comb[1] is '×××' or comb[2] is '×××' or comb[3] is '×××' or comb[4] is '×××' or comb[5] is '×××' or comb[6] is '×××' or comb[7] is '×××'
+			if '×××' in comb
 				$('section').css('filter','blur(15px)')
 				$('.modal').fadeIn()
 				$('.modal').html('<h1>Vitória do &times;!</h1><p>Clique no botão abaixo para jogar novamente.</p><button class="again">De novo!</button>')
 
-			else if comb[0] is '○○○' or comb[1] is '○○○' or comb[2] is '○○○' or comb[3] is '○○○' or comb[4] is '○○○' or comb[5] is '○○○' or comb[6] is '○○○' or comb[7] is '○○○'
+			else if '○○○' in comb
 				$('section').css('filter','blur(15px)')
 				$('.modal').fadeIn()
 				$('.modal').html('<h1>Vitória do &cir;!</h1><p>Clique no botão abaixo para jogar novamente.</p><button class="again">De novo!</button>')
